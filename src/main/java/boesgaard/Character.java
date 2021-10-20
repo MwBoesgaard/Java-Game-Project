@@ -11,9 +11,9 @@ import javafx.scene.shape.Shape;
 
 public abstract class Character {
 
-    private Polygon character;
-    private Point2D movement;
-    private Boolean alive;
+    protected Polygon character;
+    protected Point2D movement;
+    protected Boolean alive;
 
     public Character(Polygon polygon, int x, int y) {
         this.character = polygon;
@@ -65,6 +65,16 @@ public abstract class Character {
         changeY *= 0.05;
 
         this.movement = this.movement.add(changeX, changeY);
+    }
+
+    public void decelerate() {
+        double changeX = Math.cos(Math.toRadians(this.character.getRotate()));
+        double changeY = Math.sin(Math.toRadians(this.character.getRotate()));
+
+        changeX *= 0.08;
+        changeY *= 0.08;
+
+        this.movement = this.movement.subtract(changeX, changeY);
     }
 
     public boolean collide(Character other) {

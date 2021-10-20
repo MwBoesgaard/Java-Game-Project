@@ -1,5 +1,9 @@
 package boesgaard;
 
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+
+import java.awt.*;
 import java.util.Random;
 
 public class Asteroid extends Character {
@@ -8,6 +12,8 @@ public class Asteroid extends Character {
 
     public Asteroid(int x, int y) {
         super(new PolygonFactory().createPolygon(), x, y);
+        super.getCharacter().setFill(new ImagePattern(new Image("file:src/main/img/AsteroidTexture.png")));
+        //super.getCharacter().setStyle("-fx-fill: GREY");
 
         Random rnd = new Random();
 
