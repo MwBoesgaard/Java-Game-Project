@@ -223,8 +223,11 @@ public class AsteroidsApplication extends Application {
         int playerX = (int) playerShip.getCharacter().getTranslateX();
         int playerY = (int) playerShip.getCharacter().getTranslateY();
         double playerRot = playerShip.getCharacter().getRotate();
+        Rotate adjustRotToShip = new Rotate(playerRot+90, 0, 10);
         FlameDecal flameOuter = new FlameDecal(playerX+3, playerY+25,1.0);
         FlameDecal flameInner = new FlameDecal(playerX+3, playerY+16,0.4);
+        flameOuter.getCharacter().getTransforms().add(adjustRotToShip);
+        flameInner.getCharacter().getTransforms().add(adjustRotToShip);
         flameOuter.getCharacter().setFill(Color.ORANGE);
         flameInner.getCharacter().setFill(Color.RED);
         listOfFlames.add(flameOuter);
